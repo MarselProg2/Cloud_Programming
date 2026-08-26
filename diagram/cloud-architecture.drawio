@@ -1,0 +1,51 @@
+<mxfile host="app.diagrams.net" modified="2026-08-25T00:00:00.000Z" agent="Kimi Code CLI" version="22.0.0" etag="helloworld-azure" type="device">
+  <diagram name="Cloud-Architektur" id="cloud-arch-helloworld">
+    <mxGraphModel dx="1102" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="user" value="Nutzer / Browser" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8f9fa;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="request" value="HTTPS-Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078d4;" edge="1" parent="1" source="user" target="storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rg" value="Azure Resource Group&#xa;(Logischer Container)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f3ff;strokeColor=#0078d4;" vertex="1" parent="1">
+          <mxGeometry x="160" y="60" width="600" height="340" as="geometry" />
+        </mxCell>
+
+        <mxCell id="storage" value="Azure Storage Account&#xa;(Static Website aktiviert)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="webcontainer" value="$web-Container&#xa;(öffentlicher Zugriff)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="file" value="index.html&#xa;(Hello-World-Seite)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="560" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="iac" value="Terraform (IaC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="deploy" value="Erzeugt &amp; konfiguriert Ressourcen,&#xa;lädt index.html hoch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="iac" target="webcontainer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="upload" value="Upload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="file" target="webcontainer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="response" value="HTML-Antwort" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078d4;" edge="1" parent="1" source="webcontainer" target="user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
